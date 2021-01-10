@@ -1,0 +1,15 @@
+<li [ngClass]="{'list-group-item': true, 'list-group-item-success' : appareilStatus==='Allumé'
+     , 'list-group-item-danger' : appareilStatus==='Éteint' }">
+     <!-- Ceci est une classe Bootstrap -->
+     <div style="width: 20px;height: 20px;background-color: red;" *ngIf="appareilStatus === 'Éteint'">
+     </div>
+     <h4 [ngStyle]="{color: getColor()}">Appareil : {{ appareilName }} -- Statut : {{ getStatus() }}</h4>
+     <a [routerLink]="[id]">Afficher les détails de l'appareil</a>
+     <input type="text" class="form-control" [(ngModel)]="appareilName"  />
+     <button class="btn btn-sm btn-success"
+             *ngIf="appareilStatus === 'Éteint'"
+             (click)="onSwitch()">Allumer</button>
+     <button class="btn btn-sm btn-danger"
+             *ngIf="appareilStatus === 'Allumé'"
+             (click)="onSwitch()">Éteindre</button>
+</li>
